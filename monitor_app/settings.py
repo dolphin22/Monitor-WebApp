@@ -9,7 +9,11 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from os.path import abspath, basename, dirname, join, normpath
+from sys import path
+
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -18,6 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'l14du#(5)+lud=ofyixz6_bk)*em12+2^g7qv#lq)nn%yn_xk*'
+
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,3 +92,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'templates'),
+)
